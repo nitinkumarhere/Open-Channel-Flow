@@ -1,12 +1,24 @@
 # Open-Channel-Flow
 
+## installation
+```
 virtualenv env
 source env/bin/activate
 
+```
+
+
+
+```
 pip install -r requirements.txt
 
+```
 
-from geometry import ChannelSection
+
+
+
+```
+from geometry import ChannelSection, FlowArea
 
 coordinates = (
     (0, 0),
@@ -15,7 +27,6 @@ coordinates = (
     (60, 0),
 )
 
-A = ChannelSection(coordinates)
 A = ChannelSection(coordinates)
 A.plot_geometry()
 
@@ -36,3 +47,5 @@ print("Hydraulic Jump y2 : ", Af.hydraulic_jump_y2())
 print("Area cross-section flow:",  round(Af.area(), 2))
 print("Froud number :", Af.froude_number())
 Af.specific_energy_plot()
+
+```
