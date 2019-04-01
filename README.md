@@ -51,4 +51,4 @@ Af.specific_energy_plot()
 ```
 ![alt text](https://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Channel%20Section.png)
 ![alt text](https://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Channel%20Section%20with%20Flow.png)
-![alt text]()
+![alt text](https://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Specific%20Energy.png)
