@@ -49,6 +49,6 @@ print("Froud number :", Af.froude_number())
 Af.specific_energy_plot()
 
 ```
-![alt text](https://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Figure_1.png)
-![alt text](ttps://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Figure_2.png)
+![alt text](https://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Channel%20Section.png)
+![alt text](https://raw.githubusercontent.com/enkaynitin/Open-Channel-Flow/master/Channel%20Section%20with%20Flow.png)
 ![alt text]()
