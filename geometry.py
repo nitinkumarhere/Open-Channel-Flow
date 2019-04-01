@@ -3,8 +3,10 @@ from sympy import Point, Polygon, Line, Ray
 from sympy.geometry import intersection
 from sympy.geometry.entity import GeometrySet
 from operator import itemgetter
+from numpy import meshgrid
 import math
 import numpy
+
 
 g= 9.81
 
@@ -50,6 +52,7 @@ class ChannelSection:
 
     def plot_geometry(self):
         plt.plot(self.abscissas, self.ordinates)
+        plt.title('Channel Section', fontsize=14, color='black')
         plt.show()
 
 
@@ -144,6 +147,7 @@ class FlowArea(ChannelSection):
         self.abscissas.append(points[0][0])
         self.ordinates.append(points[0][1])
         plt.plot(self.abscissas, self.ordinates)
+        plt.title('Channel Section with flow depth', fontsize=14, color='black')
         plt.show()
 
     def specific_force(self):
@@ -181,25 +185,26 @@ class FlowArea(ChannelSection):
         return self.QQ/self.free_surface_length()
 
     def specific_energy_plot(self):
-        y = numpy.linspace(0, 10, 1000)
-        plt.plot(y, y+ (self.discharge_per_unit_length()*self.discharge_per_unit_length())/(2*g*y*y))
-        plt.title('Specific Energy', fontsize=14, color='black')
+        e = numpy.linspace(0,20.0, 100)
+        delta = 0.125
+        xrange = numpy.arange(0.0, 20.0, delta)
+        yrange = numpy.arange(0.0, 20.0, delta)
+        X, Y = meshgrid(xrange, yrange)
+
+        F = (X - Y)*Y*Y
+        G = (self.discharge_per_unit_length()*self.discharge_per_unit_length())/(2*g)
+        plt.plot(e, e, 'b--')
+        plt.contour(X, Y, (F - G), [0])
+        plt.title('Specific Energy E[m]', fontsize=14, color='black')
         plt.xlabel('Specific Energy', fontsize=14, color='black')
         plt.ylabel('Flow depth, y[m]', fontsize=14, color='black')
         plt.show()
 
 
-    # def specific_energy(self):
-    #     """
-    #     Assuming a resctangular section
-    #     :return:
-    #     """
-    #     velocity = self.QQ/
-
 A = ChannelSection(coordinates)
 A.plot_geometry()
 
-Af = FlowArea(A, 2.5, 2500)
+Af = FlowArea(A, 5.55, 2500)
 Af.plot_geometry()
 
 print("Centroid :", Af.get_centroid())
